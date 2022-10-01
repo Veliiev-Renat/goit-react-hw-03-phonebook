@@ -1,0 +1,15 @@
+.label{
+    display: flex;
+    flex-direction: column;
+}
+.input{
+    margin-top: 10px;
+    width: 20vw;
+    border-radius: 4px;
+}
+.input:focus{
+    border-color: rgb(29, 159, 229);
+    border-width: 2px;
+    outline:none;
+    box-shadow: 0 1px 5px rgb(41, 152, 212);
+}
