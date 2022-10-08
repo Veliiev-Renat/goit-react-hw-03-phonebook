@@ -22,7 +22,7 @@ handleSubmit = e =>{
   const form =e.currentTarget.elements
   e.preventDefault()
   if(this.state.contacts.find((contact)=>contact.name===form.name.value)){
-    alert(`${this.state.name} is alredy in you contacts`)
+    alert(`${form.name.value} is alredy in you contacts`)
     return
   }
   else{this.setState(prev=>({
