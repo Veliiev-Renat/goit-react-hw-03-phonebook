@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 export default class Filter extends Component{
     render(){
-        const {filterSubmit,seartch} = this.props
+        const {seartch} = this.props
         return(
-        <form onSubmit={filterSubmit} className={style.form}>
+        <form  className={style.form} onSubmit={(e)=>{e.preventDefault()}}>
         <h2>Contacts</h2>
         <label className={style.label}>
             Find contact by name

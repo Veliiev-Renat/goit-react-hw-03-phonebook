@@ -3,15 +3,31 @@ import style from '../Form/Form.module.css'
 import PropTypes from 'prop-types';
 
 export default class Form extends Component{
+  state={
+  name: '',
+  number: ''}
+
+  handleChange = e =>{
+    const target = e.target
+    const{name,value}=target
+    this.setState({[name]:value})
+    }
+
+    submitForm= e =>{
+      this.props.submit(e)
+      this.setState({name:'',number:''})
+    }
+
     render(){
-const {name,change,submit,number} = this.props
+const {name,number} = this.state
+
 return(<><h2>Phonebook</h2>
-<form onSubmit={submit} className={style.form}>
+<form onSubmit={this.submitForm} className={style.form}>
   <label className={style.label}>
     Name
   <input
   className={style.input}
-  onChange={change}
+  onChange={this.handleChange}
   type="text"
   name="name"
   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -24,7 +40,7 @@ return(<><h2>Phonebook</h2>
     Number
     <input
     className={style.input}
-  onChange={change}
+  onChange={this.handleChange}
   type="tel"
   name="number"
   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -33,15 +49,12 @@ return(<><h2>Phonebook</h2>
   value={number}
 />
   </label>
-  <button type='submit' className={style.button}>Add contact</button>
+  <button type='submit' className={style.button} >Add contact</button>
 </form>
 </> )
     }
 }
 
 Form.propTypes={
-    name:PropTypes.string,
-    number:PropTypes.string,
-    submit:PropTypes.func,
-    change:PropTypes.func
+    submit:PropTypes.func
 }
